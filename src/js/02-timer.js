@@ -9,6 +9,7 @@ const hours = document.querySelector('[data-hours]');
 const minutes = document.querySelector('[data-minutes]');
 const seconds = document.querySelector('[data-seconds]');
 
+let timerId = null;
 
 btnStart.disabled = true;
 
@@ -23,7 +24,7 @@ const options = {
       Notiflix.Notify.failure('Please choose a date in the future');
      } else {
        btnStart.disabled = false;
-       return selectedDate = selectedDates[0];
+       return selectedDates = selectedDates[0];
      }
    },
  };
@@ -57,7 +58,7 @@ function convertMs(ms) {
 
 const getDifference = () => {
   const todayTime = new Date().getTime();
-  const difference = selectedDate.getTime() - todayTime;
+  const difference = selectedDates.getTime() - todayTime;
 
   if (difference < 1000) {
     clearInterval(timerId);
@@ -75,7 +76,7 @@ const getDifference = () => {
   seconds.textContent = addLeadingZero(resultSeconds);
 };
 
-let timerId = null;
+
 btnStart.addEventListener('click', () => {
   btnStart.disabled = true;
   getDifference();
